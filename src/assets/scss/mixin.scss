@@ -1,0 +1,46 @@
+@charset "utf-8";
+
+@mixin card {
+    overflow: hidden;
+    border-radius: 7px;
+    box-shadow: 0 11px 23px 0 rgba(68, 123, 196, 0.09);
+    background: #fff;
+}
+@mixin abCenter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+@mixin abX {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+@mixin abY {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+@mixin btnSquare {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    line-height: 30px;
+    vertical-align: top;
+    cursor: pointer;
+}
+@mixin ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+@mixin after {
+    content: "";
+    display: block;
+}
