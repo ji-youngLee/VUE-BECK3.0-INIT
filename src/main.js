@@ -14,7 +14,8 @@ Vue.config.productionTip = false
 Vue.component('my-component', {
   template : '<div>전역컴포넌트</div>'
 });
-window.eventBus = new Vue();
+
+Vue.prototype.EventBus = new Vue(); 
 
 /* 전역 엑시오스 */
 Vue.prototype.$send = axios

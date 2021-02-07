@@ -14,9 +14,6 @@ import Gnb from '@/components/layout/Gnb';
 export default {
   name: 'App',
   created : function() {
-    eventBus.$on('trigerEvetns', function(value){
-      alert(value);
-    })
   },
   components :{
     Header,

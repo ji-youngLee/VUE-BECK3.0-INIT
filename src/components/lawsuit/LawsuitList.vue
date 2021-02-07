@@ -40,7 +40,7 @@
                         </tr>
                     </table>
                 </div>
-                <pageNavigation />
+                <pageNavigation v-if = "totalCount > 0" :totalCount="totalCount" :pagePerNum="pagePerNum" @movePage = "movePage" />
             </div>
             </div>
             <Popup v-if="showPopup"  @close="showPopup = false">
@@ -297,8 +297,11 @@ export default {
         return {
             showPopup : false, 
             msg : 'rrrrr',
+            pageNum : "1", 
+            pagePerNum : "10",
+            totalCount : "0",
             headers : ['No','프로젝트명 / 유형','현장명','사건명/번호','상대방','법무담당자','가액','제기일/확정일','상태/결과'],
-            lawsuitList : null
+            lawsuitList : []
              /*
             lawsuitList : [
                 {
@@ -350,7 +353,7 @@ export default {
                     progress : '합의종결',
                     result : '판결/판정',
                 },
-                
+
                 {
                     rowNum : '4',
                     projectName :'두바이 AAA 소송프로젝트 두바이 AAA 소송프로젝트',
@@ -406,11 +409,8 @@ export default {
      beforeCreate : function() {
         console.log('lawsuit + 1')
     },
-    crated : function() {
-         this.$send.get('/lawsuit/list').then(function(resp){
-            console.log(resp);
-            this.data.lawsuitList = resp.data
-        })
+    created : function() {
+        this.getList(this.pageNum, this.pagePerNum);
         alert('4')
     },
     mounted : function() {
@@ -418,6 +418,7 @@ export default {
         this.msg = 'dddd';
     },
     updated : function () {
+        this.EventBus.$emit('getTotalPages');
         console.log('lawsuit + 4')
     },
     components :{
@@ -427,9 +428,32 @@ export default {
 
     },
     methods : {
+        getList : function(pageNum, pagePerNum) {
+            let vue = this  
+            this.$send.request({
+                method : 'post',
+                url : '/lawsuit/list',
+                data : {
+                    pageNum :pageNum,
+                    pagePerNum : pagePerNum
+                }
+                }).then(function(resp){
+                console.log('in axios')
+                console.log(vue.data)
+                // console.log(resp);
+                vue.$data.lawsuitList = resp.data.dataList;
+                vue.$data.totalCount = resp.data.totalCount;
+                vue.$data.pageNum = resp.data.pageNum;
+            })
+
+        },
+        movePage : function (pageNum) {
+            alert('ggg')
+            this.getList(pageNum, this.pagePerNum)
+        },
         colClassCount : function (idx){
             return 'col '+  (idx + 1);
-        }
+        },
     }
 }
 </script>
