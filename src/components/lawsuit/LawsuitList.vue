@@ -350,6 +350,7 @@ export default {
                     progress : '합의종결',
                     result : '판결/판정',
                 },
+                
                 {
                     rowNum : '4',
                     projectName :'두바이 AAA 소송프로젝트 두바이 AAA 소송프로젝트',
