@@ -1,5 +1,10 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
+
+import 'babel-polyfill'
+/* ie11 axios 불러오는 순서가 이것 부터 나와야 ie11 적용*/
+import 'es6-promise'
+
 import Vue from 'vue'
 import App from './App'
 import router from './router'
@@ -7,6 +12,7 @@ import url from '@/assets/js/common/url'
 
 /* axios 추가 */
 import axios from 'axios'
+
 
 Vue.config.productionTip = false
 

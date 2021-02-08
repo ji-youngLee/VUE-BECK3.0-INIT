@@ -411,7 +411,6 @@ export default {
     },
     created : function() {
         this.getList(this.pageNum, this.pagePerNum);
-        alert('4')
     },
     mounted : function() {
         console.log('lawsuit + 3')
@@ -419,13 +418,11 @@ export default {
     },
     updated : function () {
         this.EventBus.$emit('getTotalPages');
-        console.log('lawsuit + 4')
     },
     components :{
         GridListTop,
         pageNavigation,
         Popup,
-
     },
     methods : {
         getList : function(pageNum, pagePerNum) {
@@ -448,7 +445,6 @@ export default {
 
         },
         movePage : function (pageNum) {
-            alert('ggg')
             this.getList(pageNum, this.pagePerNum)
         },
         colClassCount : function (idx){
