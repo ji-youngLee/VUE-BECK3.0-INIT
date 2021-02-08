@@ -21,7 +21,7 @@ export default {
   //  LawsuitList
   }, 
   data()  {
-    return  {aaa : 'fffffdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddf'}
+    return  {aaa : ''}
   },
   methods:{
     printText : function(){
